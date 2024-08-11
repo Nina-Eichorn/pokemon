@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import SinglePokemon from "./SinglePokemon";
 
 function AllPokemon() {
     const [pokemon, setPokemon] = useState([]);
@@ -9,7 +10,6 @@ function AllPokemon() {
         let getPokemon = async () => {
         try{
             const {data} = await axios.get("https://pokeapi.co/api/v2/pokemon");
-            console.log(data);
             setPokemon(data.results);
             setNextPage(data.next);
             return data.results;
@@ -24,7 +24,6 @@ function AllPokemon() {
         try {
             let { data } = await axios.get(nextPage);
             setPokemon((prevList) => [...prevList, ...data.results])
-            console.log('pokemon on state after loading', pokemon)
             setNextPage(data.next)
         } catch (err) {
             console.error(err);
@@ -35,17 +34,21 @@ function AllPokemon() {
     return (
         <>
             <h1>Pokemon!</h1>
-            <div>
-                {pokemon.map((poke) => {
-                    const pokemonId = poke.url.split('/')[6];
-                    const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
-                    return (
-                        <div key={poke.name}>
-                            <h3>{poke.name}</h3>
-                            <img src={imageUrl} alt={poke.name} />
-                        </div>
-                    )
-                })}
+            <div className='container'>
+                <div className='row'>
+                    {pokemon.map((poke) => {
+                        const pokemonId = poke.url.split('/')[6];
+                        const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+                        return (
+                            <div key={poke.name} className="card col-sm-2 mb-4 mx-3">
+                                <img src={imageUrl} alt={poke.name} className='card-img-top'/>
+                                <div className='card-body'>
+                                    <h3 className='card-title text-center'>{poke.name}</h3>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
             <button onClick={() => loadMorePokemon()}>Load More Pokemon</button>
         </>
