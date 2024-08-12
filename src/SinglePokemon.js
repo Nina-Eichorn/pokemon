@@ -19,11 +19,26 @@ function SinglePokemon() {
 
         fetchSingleDetails();
     }, [id]);
-    
-    console.log('pokemon details', pokemonDetails);
+
+    // console.log('pokemon details', pokemonDetails);
 
     return (
-        <>Testing Single Pokemon Component</>
+        <div>
+            <h2>Pokemon Details:</h2>
+            {pokemonDetails ? (<div>
+                <h3>{pokemonDetails.name}</h3>
+                <img
+                    src={pokemonDetails.sprites.front_default}
+                    alt={pokemonDetails.name}
+                  />
+                  <p>Height: {pokemonDetails.height}</p>
+                  <p>Weight: {pokemonDetails.weight}</p>
+                <p>Base Experience: {pokemonDetails.base_experience}</p>
+                <p>Abilities:{' '}
+                    {pokemonDetails.abilities.map((ability) => ability.ability.name).join(', ')}</p>
+            </div>): (<p>Loading Pokemon Details...</p>) }
+        </div>
+        
     )
 }
 
