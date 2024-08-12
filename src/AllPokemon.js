@@ -33,7 +33,6 @@ function AllPokemon() {
 
     return (
         <>
-            <h1>Pokemon!</h1>
             <div className='container'>
                 <div className='row'>
                     {pokemon.map((poke) => {
@@ -43,8 +42,8 @@ function AllPokemon() {
                             <div key={poke.name} className="card col-sm-2 mb-4 mx-3">
                                 <Link to={`/pokemon/${pokemonId}`}>
                                     <img src={imageUrl}
-                                        alt={poke.name} c
-                                        lassName='card-img-top'
+                                        alt={poke.name}
+                                        className='card-img-top'
                                     />
                                 <div className='card-body'>
                                     <h3 className='card-title text-center'>{poke.name}</h3>

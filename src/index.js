@@ -4,12 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import AppRoutes from './AppRoutes';
 import reportWebVitals from './reportWebVitals';
+import NavBar from './NavBar';
 
 // import bootstrap from 'bootstrap'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <NavBar/>
     <AppRoutes />
   </React.StrictMode>
 );
