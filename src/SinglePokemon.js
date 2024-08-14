@@ -23,20 +23,27 @@ function SinglePokemon() {
     // console.log('pokemon details', pokemonDetails);
 
     return (
-        <div>
-            <h2>Pokemon Details:</h2>
-            {pokemonDetails ? (<div>
-                <h3>{pokemonDetails.name}</h3>
-                <img
-                    src={pokemonDetails.sprites.front_default}
-                    alt={pokemonDetails.name}
-                  />
-                  <p>Height: {pokemonDetails.height}</p>
-                  <p>Weight: {pokemonDetails.weight}</p>
-                <p>Base Experience: {pokemonDetails.base_experience}</p>
-                <p>Abilities:{' '}
-                    {pokemonDetails.abilities.map((ability) => ability.ability.name).join(', ')}</p>
-            </div>): (<p>Loading Pokemon Details...</p>) }
+        <div className="row mt-6">
+            <div className="card col-2 mx-auto mt-6">
+                {pokemonDetails ? (<div>
+                    <img
+                        src={pokemonDetails.sprites.front_default}
+                        alt={pokemonDetails.name}
+                        className="card-img-top"
+                    />
+                    <div className="card-body">
+                        <h3 className="card-title text-center">{pokemonDetails.name}</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Height: {pokemonDetails.height}</li>
+                            <li class="list-group-item">Weight: {pokemonDetails.weight}</li>
+                            <li class="list-group-item">Base Experience: {pokemonDetails.base_experience}</li>
+                            <li class="list-group-item">Abilities:{' '}
+                            {pokemonDetails.abilities.map((ability) => ability.ability.name).join(', ')}</li>
+                            
+                        </ul>
+                    </div></div>) : (<p>Loading Pokemon Details...</p>)}
+                    
+            </div>
         </div>
         
     )

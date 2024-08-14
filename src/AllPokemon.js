@@ -30,11 +30,12 @@ function AllPokemon() {
             console.log('Error loading more pokemon ', err);
         }
     }
+    
 
     return (
         <>
-            <div className='container'>
-                <div className='row'>
+            <div className='container-fluid mt-4 d-flex justify-content-center align-items-center'>
+                <div className='row justify-content-center'>
                     {pokemon.map((poke) => {
                         const pokemonId = poke.url.split('/')[6];
                         const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
@@ -54,7 +55,7 @@ function AllPokemon() {
                     })}
                 </div>
             </div>
-            <button onClick={() => loadMorePokemon()}>Load More Pokemon</button>
+            <button className="btn btn-warning d-grid gap-2 col-6 mx-auto mb-4 mt-3" onClick={() => loadMorePokemon()}>Load More Pokemon</button>
         </>
     )
 }
