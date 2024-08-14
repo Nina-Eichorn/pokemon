@@ -23,8 +23,8 @@ function SinglePokemon() {
     // console.log('pokemon details', pokemonDetails);
 
     return (
-        <div className="row mt-6">
-            <div className="card col-2 mx-auto mt-6">
+        <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '75vh' }}>
+            <div className="card col-2 mx-auto bg-primary-subtle">
                 {pokemonDetails ? (<div>
                     <img
                         src={pokemonDetails.sprites.front_default}
